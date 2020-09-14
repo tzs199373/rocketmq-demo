@@ -15,7 +15,7 @@ public class OrderlyConsumer {
     private static String namesrvAddr = "127.0.0.1:9876";
 
     public static void main(String[] args) {
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("OrderlyConsumerGroup");
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(consumerGroup);
         consumer.setNamesrvAddr(namesrvAddr);
         try {
             consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
