@@ -7,3 +7,5 @@ rocketmq的简单demo
 ## springRocketmq包
 使用了io.github.rhwayfun的spring-boot-rocketmq-starter快速开发rocketmq业务，需要application.properties配置nameServer与producerGroup，个人感觉不怎么样，还不如在simpleRocketmq包加以改造，用以spring项目
 
+## orderlyMsgDemo包
+顺序消费
