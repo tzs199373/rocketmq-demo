@@ -1,4 +1,4 @@
-package com.rocketmq.simpleRocketmq;
+package com.rocketmq.simpleMsgDemo;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
@@ -23,14 +23,6 @@ public class SimpleConsumer {
     public void initConsumerClient(){
         if (consumer == null) {
             consumer = new DefaultMQPushConsumer(consumerGroup);
-            String ip = "ip-";
-            try {
-                ip = ip + InetAddress.getLocalHost().getHostAddress();
-            } catch (UnknownHostException e) {
-                e.printStackTrace();
-                ip = ip + UUID.randomUUID().toString();
-            }
-            consumer.setInstanceName(topic + "-" + ip);
             consumer.setNamesrvAddr(namesrvAddr);
             consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
             consumer.registerMessageListener((MessageListenerConcurrently) (list, consumeConcurrentlyContext) -> {

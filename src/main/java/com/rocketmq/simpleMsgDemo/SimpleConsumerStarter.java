@@ -1,4 +1,4 @@
-package com.rocketmq.simpleRocketmq;
+package com.rocketmq.simpleMsgDemo;
 
 public class SimpleConsumerStarter {
     public static void main(String[] args) {
