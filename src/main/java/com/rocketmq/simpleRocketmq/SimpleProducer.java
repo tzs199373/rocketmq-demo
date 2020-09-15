@@ -26,6 +26,7 @@ public class SimpleProducer {
         if (producer == null) {
             producer = new DefaultMQProducer(producerGroup);
             producer.setNamesrvAddr(namesrvAddr);
+            producer.setSendMsgTimeout(5000);
         }
         try {
             producer.start();

@@ -16,6 +16,7 @@ public class OrderlyProducer {
         try {
             DefaultMQProducer producer = new DefaultMQProducer(producerGroup);
             producer.setNamesrvAddr(namesrvAddr);
+            producer.setSendMsgTimeout(5000);
             producer.setRetryTimesWhenSendFailed(3);
             producer.start();
             String[] tags = new String[]{"创建订单", "支付", "发货", "收货", "五星好评"};
