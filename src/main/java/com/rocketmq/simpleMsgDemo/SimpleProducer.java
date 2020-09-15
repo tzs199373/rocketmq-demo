@@ -1,53 +1,29 @@
 package com.rocketmq.simpleMsgDemo;
 
-import org.apache.rocketmq.client.exception.MQBrokerException;
-import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
-import org.apache.rocketmq.remoting.exception.RemotingException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 
 public class SimpleProducer {
-    private final Logger logger = LoggerFactory.getLogger(SimpleProducer.class);
     private static final String producerGroup = "simpleProducerGroup";
     private static String namesrvAddr = "127.0.0.1:9876";
-    private DefaultMQProducer producer;
+    private static final String topic = "simpleTopic";
 
 
-    public void initProducerClient(){
-        if (producer == null) {
-            producer = new DefaultMQProducer(producerGroup);
+    public static void main(String[] args){
+        try {
+            DefaultMQProducer producer = new DefaultMQProducer(producerGroup);
             producer.setNamesrvAddr(namesrvAddr);
             producer.setSendMsgTimeout(5000);
-        }
-        try {
             producer.start();
-        } catch (MQClientException e) {
+            Message msg = new Message(topic,"tags","你好啊，我是SimpleProducer发出的消息！".getBytes(StandardCharsets.UTF_8.name()));
+            SendResult sendResult = producer.send(msg);
+            System.out.println(sendResult);
+        } catch (Exception e) {
             e.printStackTrace();
-            logger.error("producer start failed: {}",e.getMessage());
         }
     }
 
-    public void sendMsg(String topic,String tags,String body){
-        try {
-            Message msg = new Message(topic,tags,body.getBytes(StandardCharsets.UTF_8.name()));
-            SendResult sendResult = producer.send(msg);
-            System.out.println(sendResult);
-        } catch (MQClientException e) {
-            e.printStackTrace();
-        } catch (RemotingException e) {
-            e.printStackTrace();
-        } catch (MQBrokerException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-    }
 }
