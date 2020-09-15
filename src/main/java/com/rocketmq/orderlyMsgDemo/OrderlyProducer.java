@@ -30,9 +30,8 @@ public class OrderlyProducer {
                     int index = id % mqs.size();
                     return mqs.get(index);
                 }, orderId);
-                System.out.printf("%s%n", sendResult);
+                System.out.println(sendResult);
             }
-            producer.shutdown();
         } catch (Exception e) {
             e.printStackTrace();
         }

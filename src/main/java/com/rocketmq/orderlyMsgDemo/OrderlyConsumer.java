@@ -23,7 +23,10 @@ public class OrderlyConsumer {
             // 实现了MessageListenerOrderly表示一个队列只会被一个线程取到, 第二个线程无法访问这个队列,MessageListenerOrderly默认单线程
             consumer.registerMessageListener((List<MessageExt> msgs, ConsumeOrderlyContext context)-> {
                     try {
-                        System.out.println("orderInfo: " + new String(msgs.get(0).getBody(), StandardCharsets.UTF_8.name()));
+                        MessageExt msg = msgs.get(0);
+                        String tag = msg.getTags();
+                        String body = new String(msg.getBody(), StandardCharsets.UTF_8.name());
+                        System.out.println(consumerGroup+" receive msg.tag:"+tag+",body:"+body);
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }

@@ -30,7 +30,7 @@ public class SimpleConsumer {
                     MessageExt msg = list.get(0);
                     String tag = msg.getTags();
                     String body = new String(msg.getBody(), StandardCharsets.UTF_8.name());
-                    System.out.println("SimpleConsumer receive msg.tag:"+tag+",body:"+body);
+                    System.out.println(consumerGroup+" receive msg.tag:"+tag+",body:"+body);
                     return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
                 } catch (Exception e) {
                     return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;

@@ -32,7 +32,6 @@ public class TransactionConsumer {
                 }
             });
             consumer.start();
-            System.out.println(transactionConsumerGroup+" started.");
         } catch (Exception e) {
             e.printStackTrace();
         }

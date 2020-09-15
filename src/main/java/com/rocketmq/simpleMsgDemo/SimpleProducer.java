@@ -39,8 +39,8 @@ public class SimpleProducer {
     public void sendMsg(String topic,String tags,String body){
         try {
             Message msg = new Message(topic,tags,body.getBytes(StandardCharsets.UTF_8.name()));
-            SendResult result = producer.send(msg);
-            System.out.println("SimpleProducer send msg:"+msg+",·¢ËÍ½á¹û:"+result.getSendStatus());
+            SendResult sendResult = producer.send(msg);
+            System.out.println(sendResult);
         } catch (MQClientException e) {
             e.printStackTrace();
         } catch (RemotingException e) {
