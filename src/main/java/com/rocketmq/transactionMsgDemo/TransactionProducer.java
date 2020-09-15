@@ -8,7 +8,7 @@ import org.apache.rocketmq.common.message.Message;
 import java.nio.charset.StandardCharsets;
 
 public class TransactionProducer {
-    private static final String transactionProducerGroup = "TransactionProducerGroup";
+    private static final String transactionProducerGroup = "transactionProducerGroup";
     private static String namesrvAddr = "127.0.0.1:9876";
     private static final String topic = "transactionTopic";
 

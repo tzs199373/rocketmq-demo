@@ -14,11 +14,8 @@ import java.nio.charset.StandardCharsets;
 
 public class SimpleProducer {
     private final Logger logger = LoggerFactory.getLogger(SimpleProducer.class);
-
-    private static final String producerGroup = "SimpleProducerGroup";
-
+    private static final String producerGroup = "simpleProducerGroup";
     private static String namesrvAddr = "127.0.0.1:9876";
-
     private DefaultMQProducer producer;
 
 

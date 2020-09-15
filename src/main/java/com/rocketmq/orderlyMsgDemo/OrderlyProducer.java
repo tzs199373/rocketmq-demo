@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class OrderlyProducer {
-    private static final String producerGroup = "OrderlyProducerGroup";
+    private static final String producerGroup = "orderlyProducerGroup";
     private static String namesrvAddr = "127.0.0.1:9876";
     private static final String topic = "orderTopic";
 

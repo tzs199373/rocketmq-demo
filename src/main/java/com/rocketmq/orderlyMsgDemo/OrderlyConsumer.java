@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class OrderlyConsumer {
-    private static final String consumerGroup = "OrderlyConsumerGroup";
+    private static final String consumerGroup = "orderlyConsumerGroup";
     private static String namesrvAddr = "127.0.0.1:9876";
     private static final String topic = "orderTopic";
 

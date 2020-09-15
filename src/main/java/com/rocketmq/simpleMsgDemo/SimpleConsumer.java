@@ -12,13 +12,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
 public class SimpleConsumer {
-    private static final String consumerGroup = "SimpleConsumerGroup";
-
+    private static final String consumerGroup = "simpleConsumerGroup";
     private static String namesrvAddr = "127.0.0.1:9876";
-
     private DefaultMQPushConsumer consumer;
-
-    private static final String topic = "simple-topic";
+    private static final String topic = "simpleTopic";
 
     public void initConsumerClient(){
         if (consumer == null) {
