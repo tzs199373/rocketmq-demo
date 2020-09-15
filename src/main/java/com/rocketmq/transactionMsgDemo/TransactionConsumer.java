@@ -15,10 +15,10 @@ public class TransactionConsumer {
     private static final String topic = "transactionTopic";
 
     public static void main(String[] args) {
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(transactionConsumerGroup);
-        consumer.setNamesrvAddr(namesrvAddr);
-        consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
         try {
+            DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(transactionConsumerGroup);
+            consumer.setNamesrvAddr(namesrvAddr);
+            consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
             consumer.subscribe(topic, "*");
             consumer.registerMessageListener((MessageListenerConcurrently) (list, consumeConcurrentlyContext) -> {
                 try {
