@@ -13,13 +13,14 @@ import java.util.List;
 public class OrderlyConsumer {
     private static final String consumerGroup = "OrderlyConsumerGroup";
     private static String namesrvAddr = "127.0.0.1:9876";
+    private static final String topic = "orderTopic";
 
     public static void main(String[] args) {
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(consumerGroup);
-        consumer.setNamesrvAddr(namesrvAddr);
         try {
+            DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(consumerGroup);
+            consumer.setNamesrvAddr(namesrvAddr);
             consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
-            consumer.subscribe("order-topic", "*");
+            consumer.subscribe(topic, "*");
             // 实现了MessageListenerOrderly表示一个队列只会被一个线程取到, 第二个线程无法访问这个队列,MessageListenerOrderly默认单线程
             consumer.registerMessageListener((List<MessageExt> msgs, ConsumeOrderlyContext context)-> {
                     try {
@@ -37,7 +38,6 @@ public class OrderlyConsumer {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("OrderlyConsumer Started.");
     }
 
 }

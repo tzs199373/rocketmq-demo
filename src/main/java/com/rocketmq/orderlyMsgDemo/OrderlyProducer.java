@@ -11,6 +11,7 @@ import java.util.List;
 public class OrderlyProducer {
     private static final String producerGroup = "OrderlyProducerGroup";
     private static String namesrvAddr = "127.0.0.1:9876";
+    private static final String topic = "orderTopic";
 
     public static void main(String[] args) {
         try {
@@ -22,7 +23,7 @@ public class OrderlyProducer {
             String[] tags = new String[]{"创建订单", "支付", "发货", "收货", "五星好评"};
             for (int i = 5; i < 25; i++) {
                 int orderId = i / 5;
-                Message msg = new Message("order-topic", tags[i % tags.length], "uniqueId:" + i,
+                Message msg = new Message(topic, tags[i % tags.length], "uniqueId:" + i,
                         ("order_" + orderId + " " + tags[i % tags.length]).getBytes(StandardCharsets.UTF_8.name()));
                 SendResult sendResult = producer.send(msg,(List<MessageQueue> mqs, Message message, Object arg)->{
                     //此刻arg == orderId,可以保证是每个订单进入同一个队列
