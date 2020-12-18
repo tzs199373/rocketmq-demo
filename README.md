@@ -12,3 +12,6 @@ rocketmq的各种场景简单demo
 
 ## pullMsgDemo包
 消息拉取模式，生产者用simpleMsgDemo包内即可，高版本rocketmq客户端,DefaultMQPullConsumer已废弃，可研究下拉取模式其他的api
+
+## batchMsgDemo包
+批量消息
